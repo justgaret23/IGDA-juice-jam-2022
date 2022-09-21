@@ -59,6 +59,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch(other.gameObject.tag){
+            case "Obstacle":
+                HurtPlayer();
+                Destroy(other.gameObject);
+                break;
+        }
+    }
+
     //Unity function that activates upon the player colliding with any Collider 2D
     private void OnLand(){
         if(isGroundedTimerTicking()){
@@ -77,6 +86,7 @@ public class Player : MonoBehaviour
         GameManager.instance.UpdateHealthUI(playerHealth);
         if(playerHealth <= 0){
             GameManager.instance.OnGameOver();
+            Destroy(gameObject);
         }
 
         isPlayerInvincible = true;

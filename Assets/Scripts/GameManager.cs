@@ -15,14 +15,16 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     private float scoreTimer;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called ASAP
+    void Awake()
     {
         scoreTimer = scoreGainRate;
         gameOverUI.SetActive(false);
         if(instance == null){
             instance = this;
         }
+
+
     }
 
     // Update is called once per frame
@@ -32,6 +34,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void IncreaseScore(int increaseAmount){
+        if(isGameOver){
+            return;
+        }
+        
         score += increaseAmount;
         scoreText.text = "Score: " + score;
     }

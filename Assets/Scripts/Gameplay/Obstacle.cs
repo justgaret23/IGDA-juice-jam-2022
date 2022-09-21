@@ -38,13 +38,13 @@ public class Obstacle : MonoBehaviour
     private void FixSpawnPosition(SPAWNSTATE spawnState){
         switch(spawnState){
             case SPAWNSTATE.Low:
-                transform.position = new Vector2(transform.position.x, 0);
+                transform.position = new Vector2(transform.position.x, -2);
                 break;
             case SPAWNSTATE.Center:
-                transform.position = new Vector2(transform.position.x, 1);
+                transform.position = new Vector2(transform.position.x, -1);
                 break;
             case SPAWNSTATE.High:
-                transform.position = new Vector2(transform.position.x, 2);
+                transform.position = new Vector2(transform.position.x, 0);
                 break;
 
         }
